@@ -1,76 +1,32 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bếp Bánh Sunny - Hệ Thống Khóa Học</title>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bếp Bánh Sunny - Menu</title>
     <style>
-        :root { --pink-main: #ff85a2; --pink-dark: #ff5c8a; --bg-color: #fff5f7; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg-color); margin: 0; padding: 20px; color: #333; }
-        header { text-align: center; padding: 30px 0; }
-        h1 { color: var(--pink-dark); font-size: 28px; margin-bottom: 5px; }
-        .search-container { max-width: 500px; margin: 0 auto 20px auto; }
-        #searchInput { width: 100%; padding: 12px 20px; border-radius: 25px; border: 2px solid #ffcbd7; outline: none; font-size: 16px; box-sizing: border-box; }
-        .filter-container { text-align: center; margin-bottom: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-        .filter-btn { background: white; border: 2px solid var(--pink-main); color: var(--pink-main); padding: 8px 18px; border-radius: 20px; cursor: pointer; font-weight: bold; }
-        .filter-btn.active, .filter-btn:hover { background: var(--pink-main); color: white; }
-        .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; max-width: 1100px; margin: auto; }
-        .course-card { background: white; border-radius: 15px; padding: 15px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .course-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; }
-        .course-card h3 { margin: 10px 0; color: var(--pink-dark); font-size: 18px; }
-        .course-card .price { color: #ff2e63; font-weight: bold; font-size: 17px; margin-bottom: 15px; }
-        .btn-view { background: var(--pink-main); color: white; text-decoration: none; padding: 10px; border-radius: 10px; font-weight: bold; display: block; }
+        body { font-family: sans-serif; background: #fff5f7; margin: 0; padding: 20px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 600px; margin: auto; }
+        .item { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer; }
+        .item img { width: 100%; height: 160px; object-fit: cover; }
+        .info { padding: 10px; text-align: center; }
+        h3 { margin: 5px 0; font-size: 14px; color: #333; }
+        .price { color: #ff5c8a; font-weight: bold; }
     </style>
 </head>
 <body>
-
-<header>
-    <h1>🧁 Menu Khóa Học Sunny</h1>
-    <p>Chọn khóa học bạn yêu thích nhé!</p>
-</header>
-
-<div class="search-container">
-    <input type="text" id="searchInput" onkeyup="filterCourses()" placeholder="Tìm tên khóa học...">
-</div>
-
-<div class="filter-container">
-    <button class="filter-btn active" onclick="setCategory('all', this)">Tất cả</button>
-    <button class="filter-btn" onclick="setCategory('thach', this)">Thạch</button>
-    <button class="filter-btn" onclick="setCategory('banhkem', this)">Bánh Kem</button>
-    <button class="filter-btn" onclick="setCategory('banhquy', this)">Bánh Quy</button>
-    <button class="filter-btn" onclick="setCategory('khac', this)">Khác</button>
-</div>
-
-<div class="course-grid" id="courseGrid">
-    <div class="course-card" data-category="thach">
-        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400" alt="Thạch">
-        <h3>Khóa Thạch Chân Mèo</h3>
-        <div class="price">199.000đ</div>
-        <a href="https://khoa-hoc-thach.vercel.app" class="btn-view">Xem chi tiết</a>
+    <h1 style="text-align:center; color:#ff5c8a;">Bếp Bánh Sunny</h1>
+    <div class="grid">
+    <div class="item" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_quy_bo/'">
+        <img src="/Images/banhquy.jpg">
+        <div class="info"><h3>Khóa học Bánh Quy Bơ</h3><div class="price">199.000đ</div></div>
     </div>
-    
+    <div class="item" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_chuoi/'">
+        <img src="https://cdn.hstatic.net/files/200000700229/article/banh-chuoi-chien-thumb_622cc7da733a46b68b12ad97bb85e6dd.jpg">
+        <div class="info"><h3>Khóa học Bánh Chuối</h3><div class="price">199.000đ</div></div>
     </div>
-
-<script>
-    let currentCategory = 'all';
-    function setCategory(cat, btn) {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentCategory = cat;
-        filterCourses();
-    }
-    function filterCourses() {
-        let input = document.getElementById('searchInput').value.toLowerCase();
-        let cards = document.getElementsByClassName('course-card');
-        for (let i = 0; i < cards.length; i++) {
-            let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
-            let cat = cards[i].getAttribute('data-category');
-            if ((currentCategory === 'all' || cat === currentCategory) && title.includes(input)) {
-                cards[i].style.display = "";
-            } else { cards[i].style.display = "none"; }
-        }
-    }
-</script>
+    <div class="item" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/tom_chien/'">
+        <img src="https://cdn.tgdd.vn/2022/09/CookDish/2-cach-lam-tom-chien-xu-rao-dau-gion-rum-ai-cung-me-avt-1200x676.jpg">
+        <div class="info"><h3>Khóa học Tôm Chiên</h3><div class="price">199.000đ</div></div>
+    </div></div>
 </body>
 </html>
- 
