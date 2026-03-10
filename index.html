@@ -4,29 +4,77 @@
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bếp Bánh Sunny - Menu</title>
     <style>
-        body { font-family: sans-serif; background: #fff5f7; margin: 0; padding: 20px; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 600px; margin: auto; }
-        .item { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer; }
-        .item img { width: 100%; height: 160px; object-fit: cover; }
-        .info { padding: 10px; text-align: center; }
-        h3 { margin: 5px 0; font-size: 14px; color: #333; }
-        .price { color: #ff5c8a; font-weight: bold; }
+        body { font-family: 'Segoe UI', sans-serif; background: #fff5f7; margin: 0; padding: 20px; text-align: center; }
+        .header h1 { color: #ff5c8a; margin-bottom: 5px; }
+        
+        /* THANH TÌM KIẾM */
+        .search-container { margin: 20px auto; max-width: 500px; position: relative; }
+        #searchInput { width: 100%; padding: 15px 20px; border-radius: 30px; border: 2px solid #ffcad4; outline: none; font-size: 16px; box-sizing: border-box; }
+        #searchInput:focus { border-color: #ff5c8a; box-shadow: 0 0 10px rgba(255,92,138,0.2); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; max-width: 800px; margin: auto; }
+        .course-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+        .course-card img { width: 100%; height: 140px; object-fit: cover; }
+        .info { padding: 12px; }
+        h3 { margin: 0; font-size: 14px; color: #333; min-height: 40px; }
+        .price { color: #ff5c8a; font-weight: bold; margin: 8px 0; }
+        button { background: #ff5c8a; color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; width: 100%; font-size: 12px; font-weight: bold; }
+        
+        /* Khi không tìm thấy món */
+        #noResult { display: none; color: #999; margin-top: 30px; }
     </style>
 </head>
 <body>
-    <h1 style="text-align:center; color:#ff5c8a;">Bếp Bánh Sunny</h1>
-    <div class="grid">
-    <div class="item" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_quy_bo/'">
-        <img src="/Images/banhquy.jpg">
-        <div class="info"><h3>Khóa học Bánh Quy Bơ</h3><div class="price">199.000đ</div></div>
+    <div class="header"><h1>Bếp Bánh Sunny</h1><p>Hệ Thống Khóa Học Online</p></div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="searchMón()" placeholder="🔍 Tìm tên món ăn BẠN muốn học...">
     </div>
-    <div class="item" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_chuoi/'">
+
+    <div class="grid" id="courseGrid">
+    <div class="course-card" data-name="khóa học bánh quy bơ">
+        <img src="https://khoa-hoc-thach.vercel.app/Images/banhquy.jpg">
+        <div class="info">
+            <h3>Khóa học Bánh Quy Bơ</h3>
+            <div class="price">199.000đ</div>
+            <button onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_quy_bo/'">Xem chi tiết</button>
+        </div>
+    </div>
+    <div class="course-card" data-name="khóa học bánh chuối">
         <img src="https://cdn.hstatic.net/files/200000700229/article/banh-chuoi-chien-thumb_622cc7da733a46b68b12ad97bb85e6dd.jpg">
-        <div class="info"><h3>Khóa học Bánh Chuối</h3><div class="price">199.000đ</div></div>
+        <div class="info">
+            <h3>Khóa học Bánh Chuối</h3>
+            <div class="price">199.000đ</div>
+            <button onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_chuoi/'">Xem chi tiết</button>
+        </div>
     </div>
-    <div class="item" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/tom_chien/'">
+    <div class="course-card" data-name="khóa học tôm chiên">
         <img src="https://cdn.tgdd.vn/2022/09/CookDish/2-cach-lam-tom-chien-xu-rao-dau-gion-rum-ai-cung-me-avt-1200x676.jpg">
-        <div class="info"><h3>Khóa học Tôm Chiên</h3><div class="price">199.000đ</div></div>
+        <div class="info">
+            <h3>Khóa học Tôm Chiên</h3>
+            <div class="price">199.000đ</div>
+            <button onclick="window.location.href='https://khoa-hoc-thach.vercel.app/tom_chien/'">Xem chi tiết</button>
+        </div>
     </div></div>
+    <div id="noResult">Hic, không tìm thấy món này rồi BẠN ơi... 😢</div>
+
+    <script>
+        function searchMón() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('course-card');
+            let found = false;
+
+            for (let card of cards) {
+                let name = card.getAttribute('data-name');
+                if (name.includes(input)) {
+                    card.style.display = "";
+                    found = true;
+                } else {
+                    card.style.display = "none";
+                }
+            }
+            document.getElementById('noResult').style.display = found ? "none" : "block";
+        }
+    </script>
 </body>
 </html>
