@@ -1,80 +1,33 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bếp Bánh Sunny - Menu</title>
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #fff5f7; margin: 0; padding: 20px; text-align: center; }
-        .header h1 { color: #ff5c8a; margin-bottom: 5px; }
-        
-        /* THANH TÌM KIẾM */
-        .search-container { margin: 20px auto; max-width: 500px; position: relative; }
-        #searchInput { width: 100%; padding: 15px 20px; border-radius: 30px; border: 2px solid #ffcad4; outline: none; font-size: 16px; box-sizing: border-box; }
-        #searchInput:focus { border-color: #ff5c8a; box-shadow: 0 0 10px rgba(255,92,138,0.2); }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; max-width: 800px; margin: auto; }
-        .course-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; }
-        .course-card img { width: 100%; height: 140px; object-fit: cover; }
-        .info { padding: 12px; }
-        h3 { margin: 0; font-size: 14px; color: #333; min-height: 40px; }
-        .price { color: #ff5c8a; font-weight: bold; margin: 8px 0; }
-        button { background: #ff5c8a; color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; width: 100%; font-size: 12px; font-weight: bold; }
-        
-        /* Khi không tìm thấy món */
-        #noResult { display: none; color: #999; margin-top: 30px; }
-    </style>
-</head>
-<body>
-    <div class="header"><h1>Bếp Bánh Sunny</h1><p>Hệ Thống Khóa Học Online</p></div>
-
-    <div class="search-container">
-        <input type="text" id="searchInput" onkeyup="searchMón()" placeholder="🔍 Tìm tên món ăn BẠN muốn học...">
-    </div>
-
-    <div class="grid" id="courseGrid">
-    <div class="course-card" data-name="khóa học bánh quy bơ">
-        <img src="https://khoa-hoc-thach.vercel.app/Images/banhquy.jpg">
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Menu Sunny</title><style>body { font-family: sans-serif; background: #fff5f7; padding: 20px; text-align: center; } .search { margin-bottom: 20px; } input { width: 100%; max-width: 400px; padding: 12px 20px; border-radius: 25px; border: 2px solid #ffcad4; outline: none; } .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; max-width: 800px; margin: auto; } .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); } .img-w { position: relative; } img { width: 100%; height: 140px; object-fit: cover; } .t { position: absolute; bottom: 5px; right: 5px; background: rgba(255,255,255,0.8); color: #ff2e63; padding: 3px 6px; border-radius: 5px; font-weight: bold; font-size: 11px; } .info { padding: 10px; } h3 { font-size: 14px; margin: 0; min-height: 35px; } .p-box { margin: 8px 0; } .n { color: #ff5c8a; font-weight: bold; font-size: 16px; display: block; } .o { color: #bbb; text-decoration: line-through; font-size: 12px; } button { background: #ff5c8a; color: white; border: none; padding: 8px; border-radius: 8px; width: 100%; cursor: pointer; font-size: 12px; font-weight: bold; }</style></head><body>
+    <h1 style="color:#ff5c8a">Bếp Bánh Sunny</h1>
+    <div class="search"><input type="text" id="s" onkeyup="search()" placeholder="🔍 Tìm khóa học..."></div>
+    <div class="grid" id="g">
+    <div class="card" data-name="khóa học bánh quy bơ">
+        <div class="img-w"><img src="https://khoa-hoc-thach.vercel.app/Images/banhquy.jpg"><div class="t" data-id="banh_quy_bo">⏱ 60:00</div></div>
         <div class="info">
             <h3>Khóa học Bánh Quy Bơ</h3>
-            <div class="price">199.000đ</div>
+            <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
             <button onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_quy_bo/'">Xem chi tiết</button>
         </div>
     </div>
-    <div class="course-card" data-name="khóa học bánh chuối">
-        <img src="https://cdn.hstatic.net/files/200000700229/article/banh-chuoi-chien-thumb_622cc7da733a46b68b12ad97bb85e6dd.jpg">
+    <div class="card" data-name="khóa học bánh chuối">
+        <div class="img-w"><img src="https://cdn.hstatic.net/files/200000700229/article/banh-chuoi-chien-thumb_622cc7da733a46b68b12ad97bb85e6dd.jpg"><div class="t" data-id="banh_chuoi">⏱ 60:00</div></div>
         <div class="info">
             <h3>Khóa học Bánh Chuối</h3>
-            <div class="price">199.000đ</div>
+            <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
             <button onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_chuoi/'">Xem chi tiết</button>
         </div>
     </div>
-    <div class="course-card" data-name="khóa học tôm chiên">
-        <img src="https://cdn.tgdd.vn/2022/09/CookDish/2-cach-lam-tom-chien-xu-rao-dau-gion-rum-ai-cung-me-avt-1200x676.jpg">
+    <div class="card" data-name="khóa học tôm chiên">
+        <div class="img-w"><img src="https://cdn.tgdd.vn/2022/09/CookDish/2-cach-lam-tom-chien-xu-rao-dau-gion-rum-ai-cung-me-avt-1200x676.jpg"><div class="t" data-id="tom_chien">⏱ 60:00</div></div>
         <div class="info">
             <h3>Khóa học Tôm Chiên</h3>
-            <div class="price">199.000đ</div>
+            <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
             <button onclick="window.location.href='https://khoa-hoc-thach.vercel.app/tom_chien/'">Xem chi tiết</button>
         </div>
     </div></div>
-    <div id="noResult">Hic, không tìm thấy món này rồi BẠN ơi... 😢</div>
-
     <script>
-        function searchMón() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
-            let cards = document.getElementsByClassName('course-card');
-            let found = false;
-
-            for (let card of cards) {
-                let name = card.getAttribute('data-name');
-                if (name.includes(input)) {
-                    card.style.display = "";
-                    found = true;
-                } else {
-                    card.style.display = "none";
-                }
-            }
-            document.getElementById('noResult').style.display = found ? "none" : "block";
-        }
-    </script>
-</body>
-</html>
+        function search() { let v=document.getElementById('s').value.toLowerCase(); document.querySelectorAll('.card').forEach(c => { c.style.display=c.getAttribute('data-name').includes(v)?"":"none" }); }
+        function init() { document.querySelectorAll('.t').forEach(t => { let id=t.dataset.id, k="t_"+id, s=localStorage.getItem(k)||Math.floor(Date.now()/1000); localStorage.setItem(k,s); setInterval(()=>{ let l=3600-(Math.floor(Date.now()/1000)-s); if(l<=0){t.innerText="⏱ 00:00"; return;} let m=Math.floor(l/60), se=l%60; t.innerText="⏱ "+(m<10?'0'+m:m)+":"+(se<10?'0'+se:se); }, 1000); }); }
+        init();
+    </script></body></html>
