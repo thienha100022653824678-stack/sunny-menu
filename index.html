@@ -1,21 +1,12 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>
-    * { box-sizing: border-box; }
-    body{font-family:sans-serif;background:#fff5f7;padding:20px;text-align:center;margin:0}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;max-width:1100px;margin:auto}
-    .card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.05);border:1px solid #fff0f3}
-    img{width:100%;height:180px;object-fit:cover}
-    .info{padding:15px}h3{font-size:16px;margin:0 0 10px 0;min-height:40px}
-    .p-box{margin:10px 0}.n{color:#ff5c8a;font-weight:bold;font-size:22px}.o{color:#bbb;text-decoration:line-through;font-size:14px;margin-left:8px}
-    .m-timer{background:#fff9db;padding:8px;border-radius:10px;color:#ff2e63;font-weight:bold;font-size:12px;margin-bottom:12px}
-    .m-btn{background:#ff5c8a;color:white;border:none;padding:12px;border-radius:10px;width:100%;cursor:pointer;font-weight:bold}
-  </style></head><body>
-    <h1 style="color:#ff5c8a;margin-bottom:30px">Bếp Bánh Sunny</h1>
-    <div class="grid">
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>*{box-sizing:border-box;}body{font-family:sans-serif;background:#fff5f7;padding:20px;text-align:center;margin:0}.search-box{margin-bottom:30px;} #s{width:100%;max-width:500px;padding:15px 25px;border-radius:30px;border:2px solid #ffcad4;outline:none;font-size:16px;}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:25px;max-width:1100px;margin:auto}.card{background:white;border-radius:25px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.05);border:1px solid #fff0f3}img{width:100%;height:180px;object-fit:cover}.info{padding:20px}h3{font-size:17px;margin:0 0 10px 0;min-height:45px}.p-box{margin:10px 0}.n{color:#ff5c8a;font-weight:900;font-size:24px}.o{color:#bbb;text-decoration:line-through;font-size:15px;margin-left:10px}.m-timer{background:#fff9db;padding:10px;border-radius:12px;color:#ff2e63;font-weight:bold;font-size:12px;margin-bottom:15px}button{background:#ff5c8a;color:white;border:none;padding:15px;border-radius:12px;width:100%;cursor:pointer;font-weight:bold;font-size:15px}</style></head><body>
+    <h1 style="color:#ff5c8a;margin-bottom:10px;font-size:32px">Bếp Bánh Sunny</h1>
+    <div class="search-box"><input type="text" id="s" onkeyup="search()" placeholder="🔍 Tìm khóa học..."></div>
+    <div class="grid" id="g">
     <div class="card" data-name="khóa học bánh quy bơ">
         <div class="img-w"><img src="https://khoa-hoc-thach.vercel.app/Images/banhquy.jpg"></div>
         <div class="info">
             <h3>Khóa học Bánh Quy Bơ</h3>
-            <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
+            <div class="p-box"><span class="n m-price-now" data-sale="199.000đ" data-old="399.000đ" data-end="19/20/10/03/2026">199.000đ</span><span class="o m-price-was">399.000đ</span></div>
             <div class="m-timer" data-end="19/20/10/03/2026">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
             <button class="m-btn" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_quy_bo/'">Xem chi tiết</button>
         </div>
@@ -24,8 +15,8 @@
         <div class="img-w"><img src="https://cdn.hstatic.net/files/200000700229/article/banh-chuoi-chien-thumb_622cc7da733a46b68b12ad97bb85e6dd.jpg"></div>
         <div class="info">
             <h3>Khóa học Bánh Chuối</h3>
-            <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
-            <div class="m-timer" data-end="19/20/10/03/2027">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
+            <div class="p-box"><span class="n m-price-now" data-sale="199.000đ" data-old="399.000đ" data-end="19/20/10/03/2026">199.000đ</span><span class="o m-price-was">399.000đ</span></div>
+            <div class="m-timer" data-end="19/20/10/03/2026">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
             <button class="m-btn" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_chuoi/'">Xem chi tiết</button>
         </div>
     </div>
@@ -33,20 +24,23 @@
         <div class="img-w"><img src="https://cdn.tgdd.vn/2022/09/CookDish/2-cach-lam-tom-chien-xu-rao-dau-gion-rum-ai-cung-me-avt-1200x676.jpg"></div>
         <div class="info">
             <h3>Khóa học Tôm Chiên</h3>
-            <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
-            <div class="m-timer" data-end="19/20/10/03/2028">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
+            <div class="p-box"><span class="n m-price-now" data-sale="199.000đ" data-old="399.000đ" data-end="19/20/10/03/2026">199.000đ</span><span class="o m-price-was">399.000đ</span></div>
+            <div class="m-timer" data-end="19/20/10/03/2026">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
             <button class="m-btn" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/tom_chien/'">Xem chi tiết</button>
         </div>
     </div></div>
     <script>
+        function search() { let v=document.getElementById('s').value.toLowerCase(); document.querySelectorAll('.card').forEach(c => { c.style.display=c.getAttribute('data-name').includes(v)?"":"none" }); }
         function parseDate(s){ const p=s.split('/'); return new Date(p[4],p[3]-1,p[2],p[0],p[1]).getTime(); }
-        document.querySelectorAll('.m-timer').forEach(t => {
-            const end=parseDate(t.dataset.end), span=t.querySelector('span');
-            setInterval(() => {
-                const diff=end-new Date().getTime();
-                if(diff<=0){ t.innerText="Ưu đãi kết thúc"; return; }
-                const h=Math.floor(diff/(1000*60*60)), m=Math.floor((diff%(1000*60*60))/(1000*60)), s=Math.floor((diff%(1000*60))/1000);
-                span.innerText=(h<10?'0'+h:h)+":"+(m<10?'0'+m:m)+":"+(s<10?'0'+s:s);
-            }, 1000);
-        });
+        setInterval(() => {
+            document.querySelectorAll('.card').forEach(c => {
+                const timerSpan = c.querySelector('.m-timer span');
+                const priceNow = c.querySelector('.m-price-now');
+                const priceWas = c.querySelector('.m-price-was');
+                const endTime = parseDate(priceNow.dataset.end);
+                const diff = endTime - new Date().getTime();
+                if(diff <= 0) { c.querySelector('.m-timer').innerText = "Hết hạn"; priceNow.innerText = priceNow.dataset.old; if(priceWas) priceWas.style.display = 'none'; }
+                else { const h=Math.floor(diff/(1000*60*60)), m=Math.floor((diff%(1000*60*60))/(1000*60)), s=Math.floor((diff%(1000*60))/1000); if(timerSpan) timerSpan.innerText = (h<10?'0'+h:h)+":"+(m<10?'0'+m:m)+":"+(s<10?'0'+s:s); }
+            });
+        }, 1000);
     </script></body></html>
