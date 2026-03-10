@@ -1,49 +1,42 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Menu Sunny</title><style>body { font-family: sans-serif; background: #fff5f7; padding: 20px; text-align: center; } .search { margin-bottom: 20px; } input { width: 100%; max-width: 400px; padding: 12px 20px; border-radius: 25px; border: 2px solid #ffcad4; outline: none; } .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; max-width: 800px; margin: auto; } .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); } .img-w { position: relative; } img { width: 100%; height: 140px; object-fit: cover; } .t { position: absolute; bottom: 5px; right: 5px; background: rgba(255,255,255,0.8); color: #ff2e63; padding: 3px 6px; border-radius: 5px; font-weight: bold; font-size: 11px; } .info { padding: 10px; } h3 { font-size: 14px; margin: 0; min-height: 35px; } .n { color: #ff5c8a; font-weight: bold; font-size: 16px; display: block; } .o { color: #bbb; text-decoration: line-through; font-size: 12px; } button { background: #ff5c8a; color: white; border: none; padding: 8px; border-radius: 8px; width: 100%; cursor: pointer; font-size: 12px; font-weight: bold; }</style></head><body>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>body{font-family:sans-serif;background:#fff5f7;padding:20px;text-align:center}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;max-width:1000px;margin:auto}.card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.05)}img{width:100%;height:180px;object-fit:cover}.info{padding:15px}h3{font-size:16px;margin:0;min-height:40px}.p-box{margin:10px 0}.n{color:#ff5c8a;font-weight:bold;font-size:20px}.o{color:#bbb;text-decoration:line-through;font-size:14px;margin-left:8px}.m-timer{background:#fff9db;padding:8px;border-radius:10px;color:#ff2e63;font-weight:bold;font-size:11px;margin-bottom:12px}button{background:#ff5c8a;color:white;border:none;padding:12px;border-radius:10px;width:100%;cursor:pointer;font-weight:bold}</style></head><body>
     <h1 style="color:#ff5c8a">Bếp Bánh Sunny</h1>
-    <div class="search"><input type="text" id="s" onkeyup="search()" placeholder="🔍 Tìm khóa học..."></div>
     <div class="grid">
     <div class="card" data-name="khóa học bánh quy bơ">
-        <div class="img-w"><img src="https://khoa-hoc-thach.vercel.app/Images/banhquy.jpg"><div class="t" data-end="18/20/10/03/2026">Tính toán...</div></div>
+        <div class="img-w"><img src="https://khoa-hoc-thach.vercel.app/Images/banhquy.jpg"></div>
         <div class="info">
             <h3>Khóa học Bánh Quy Bơ</h3>
             <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
+            <div class="m-timer" data-end="18/20/10/03/2026">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
             <button onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_quy_bo/'">Xem chi tiết</button>
         </div>
     </div>
     <div class="card" data-name="khóa học bánh chuối">
-        <div class="img-w"><img src="https://cdn.hstatic.net/files/200000700229/article/banh-chuoi-chien-thumb_622cc7da733a46b68b12ad97bb85e6dd.jpg"><div class="t" data-end="">Tính toán...</div></div>
+        <div class="img-w"><img src="https://cdn.hstatic.net/files/200000700229/article/banh-chuoi-chien-thumb_622cc7da733a46b68b12ad97bb85e6dd.jpg"></div>
         <div class="info">
             <h3>Khóa học Bánh Chuối</h3>
             <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
+            <div class="m-timer" data-end="">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
             <button onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_chuoi/'">Xem chi tiết</button>
         </div>
     </div>
     <div class="card" data-name="khóa học tôm chiên">
-        <div class="img-w"><img src="https://cdn.tgdd.vn/2022/09/CookDish/2-cach-lam-tom-chien-xu-rao-dau-gion-rum-ai-cung-me-avt-1200x676.jpg"><div class="t" data-end="">Tính toán...</div></div>
+        <div class="img-w"><img src="https://cdn.tgdd.vn/2022/09/CookDish/2-cach-lam-tom-chien-xu-rao-dau-gion-rum-ai-cung-me-avt-1200x676.jpg"></div>
         <div class="info">
             <h3>Khóa học Tôm Chiên</h3>
             <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
+            <div class="m-timer" data-end="">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
             <button onclick="window.location.href='https://khoa-hoc-thach.vercel.app/tom_chien/'">Xem chi tiết</button>
         </div>
     </div></div>
     <script>
-        function search() { let v=document.getElementById('s').value.toLowerCase(); document.querySelectorAll('.card').forEach(c => { c.style.display=c.getAttribute('data-name').includes(v)?"":"none" }); }
-        function parseDate(str) {
-            const p = str.split('/');
-            return new Date(p[4], p[3]-1, p[2], p[0], p[1]).getTime();
-        }
-        function init() {
-            document.querySelectorAll('.t').forEach(t => {
-                const endTime = parseDate(t.dataset.end);
-                setInterval(() => {
-                    const diff = endTime - new Date().getTime();
-                    if(diff <= 0) { t.innerText = "Hết hạn"; return; }
-                    const h = Math.floor((diff / (1000 * 60 * 60)));
-                    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    const s = Math.floor((diff % (1000 * 60)) / 1000);
-                    t.innerText = "⏱ "+(h<10?'0'+h:h)+":"+(m<10?'0'+m:m)+":"+(s<10?'0'+s:s);
-                }, 1000);
-            });
-        }
-        init();
+        function parseDate(s){ const p=s.split('/'); return new Date(p[4],p[3]-1,p[2],p[0],p[1]).getTime(); }
+        document.querySelectorAll('.m-timer').forEach(t => {
+            const end=parseDate(t.dataset.end), span=t.querySelector('span');
+            setInterval(() => {
+                const diff=end-new Date().getTime();
+                if(diff<=0){ t.innerText="Hết hạn"; return; }
+                const h=Math.floor(diff/(1000*60*60)), m=Math.floor((diff%(1000*60*60))/(1000*60)), s=Math.floor((diff%(1000*60))/1000);
+                span.innerText=(h<10?'0'+h:h)+":"+(m<10?'0'+m:m)+":"+(s<10?'0'+s:s);
+            }, 1000);
+        });
     </script></body></html>
