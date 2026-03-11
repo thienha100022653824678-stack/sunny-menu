@@ -15,7 +15,7 @@
         <div class="info">
             <h3>Khóa học Bánh Quy Bơ</h3>
             <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
-            <div class="m-timer" data-end="2/10/11/03/2026">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
+            <div class="m-timer" data-end="2026-03-11T10:02:00">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
             <button class="m-btn" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_quy_bo/'">Xem chi tiết</button>
         </div>
     </div>
@@ -24,7 +24,7 @@
         <div class="info">
             <h3>Khóa học Bánh Chuối</h3>
             <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
-            <div class="m-timer" data-end="2/10/11/03/2026">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
+            <div class="m-timer" data-end="2026-03-11T10:02:00">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
             <button class="m-btn" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_chuoi/'">Xem chi tiết</button>
         </div>
     </div>
@@ -33,7 +33,7 @@
         <div class="info">
             <h3>Khóa học Tôm Chiên</h3>
             <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
-            <div class="m-timer" data-end="2/10/11/03/2026">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
+            <div class="m-timer" data-end="2026-03-11T10:02:00">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
             <button class="m-btn" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/tom_chien/'">Xem chi tiết</button>
         </div>
     </div>
@@ -42,18 +42,21 @@
         <div class="info">
             <h3>Khóa học gà bò</h3>
             <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
-            <div class="m-timer" data-end="2/10/11/03/2026">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
+            <div class="m-timer" data-end="2026-03-11T10:02:00">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
             <button class="m-btn" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/ga_bo/'">Xem chi tiết</button>
         </div>
     </div></div>
     <script>
-        function parseDate(s){ const p=s.split('/'); return new Date(p[4],p[3]-1,p[2],p[0],p[1]).getTime(); }
         document.querySelectorAll('.m-timer').forEach(t => {
-            const end=parseDate(t.dataset.end), span=t.querySelector('span');
+            const end = new Date(t.dataset.end).getTime();
+            const span = t.querySelector('span');
+            
             setInterval(() => {
-                const diff=end-new Date().getTime();
-                if(diff<=0){ t.innerText="Ưu đãi kết thúc"; return; }
-                const h=Math.floor(diff/(1000*60*60)), m=Math.floor((diff%(1000*60*60))/(1000*60)), s=Math.floor((diff%(1000*60))/1000);
+                const diff = end - new Date().getTime();
+                if(diff <= 0){ t.innerText="Ưu đãi đã kết thúc!"; return; }
+                const h = Math.floor(diff / (1000 * 60 * 60)); 
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)); 
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
                 span.innerText=(h<10?'0'+h:h)+":"+(m<10?'0'+m:m)+":"+(s<10?'0'+s:s);
             }, 1000);
         });
