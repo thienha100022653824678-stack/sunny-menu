@@ -1,71 +1,55 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>
-    body{font-family:sans-serif;background:#fff5f7;padding:20px;text-align:center;margin:0}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;max-width:1100px;margin:auto}
-    .card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.05);border:1px solid #fff0f3}
-    img{width:100%;height:180px;object-fit:cover}
-    .info{padding:15px}h3{font-size:16px;margin:0 0 10px 0;min-height:40px}
-    .p-box{margin:10px 0}.n{color:#ff5c8a;font-weight:bold;font-size:22px}.o{color:#bbb;text-decoration:line-through;font-size:14px;margin-left:8px}
-    .m-timer{background:#fff9db;padding:8px;border-radius:10px;color:#ff2e63;font-weight:bold;font-size:12px;margin-bottom:12px}
-    .m-btn{background:#ff5c8a;color:white;border:none;padding:12px;border-radius:10px;width:100%;cursor:pointer;font-weight:bold}
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Bếp Bánh Sunny</title>
+  <style>
+    body{font-family:sans-serif;background:#f8f9fa;text-align:center;padding:20px;margin:0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:25px;max-width:1100px;margin:auto}
+    .card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,0.06);text-align:left;border:1px solid #eee}
+    .card img{width:100%;height:180px;object-fit:cover} .info{padding:20px} h3{font-size:17px;margin:0 0 10px 0;height:45px}
+    .p-row{margin-bottom:12px} .p-new{color:#ff5c8a;font-weight:900;font-size:22px} .p-old{text-decoration:line-through;color:#aaa;font-size:14px;margin-left:8px}
+    .t-box{background:#fff0f3;padding:8px 12px;border-radius:8px;color:#e63946;font-weight:bold;font-size:12px;margin-bottom:15px;display:inline-block}
+    .btn{display:block;background:#ff5c8a;color:#fff;text-decoration:none;padding:12px;border-radius:10px;text-align:center;font-weight:bold}
+    .s-box{max-width:500px;margin:0 auto 30px auto} #s{width:100%;padding:15px 20px;border-radius:30px;border:2px solid #ffcad4;outline:none;font-size:16px;box-sizing:border-box}
   </style></head><body>
-    <h1 style="color:#ff5c8a;margin-bottom:30px">Bếp Bánh Sunny</h1>
+    <h1 style="color:#ff5c8a;margin-bottom:20px;font-size:30px">Bếp Bánh Sunny</h1>
+    <div class="s-box"><input type="text" id="s" onkeyup="search()" placeholder="🔍 Tìm khóa học..."></div>
     <div class="grid">
-    <div class="card" data-name="khóa học bánh quy bơ">
-        <div class="img-w"><img src="https://khoa-hoc-thach.vercel.app/Images/banhquy.jpg"></div>
-        <div class="info">
-            <h3>Khóa học Bánh Quy Bơ</h3>
-            <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
-            <div class="m-timer" data-id="banh_quy_bo">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
-            <button class="m-btn" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_quy_bo/'">Xem chi tiết</button>
-        </div>
+    <div class="card">
+      <img src="/Images/banhquy.jpg">
+      <div class="info">
+        <h3>Khóa học Bánh Quy Bơ</h3><div class="p-row"><span class="p-new">199.000đ</span><span class="p-old">399.000đ</span></div>
+        <div class="t-box" data-end="1773216360463">Sale kết thúc sau: ⏱ <span>...</span></div>
+        <a href="https://khoa-hoc-thach.vercel.app/banh_quy_bo/" class="btn">XEM CHI TIẾT</a>
+      </div>
     </div>
-    <div class="card" data-name="khóa học bánh chuối">
-        <div class="img-w"><img src="https://cdn.hstatic.net/files/200000700229/article/banh-chuoi-chien-thumb_622cc7da733a46b68b12ad97bb85e6dd.jpg"></div>
-        <div class="info">
-            <h3>Khóa học Bánh Chuối</h3>
-            <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
-            <div class="m-timer" data-id="banh_chuoi">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
-            <button class="m-btn" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_chuoi/'">Xem chi tiết</button>
-        </div>
+    <div class="card">
+      <img src="https://cdn.hstatic.net/files/200000700229/article/banh-chuoi-chien-thumb_622cc7da733a46b68b12ad97bb85e6dd.jpg">
+      <div class="info">
+        <h3>Khóa học Bánh Chuối</h3><div class="p-row"><span class="p-new">199.000đ</span><span class="p-old">399.000đ</span></div>
+        <div class="t-box" data-end="1773216360463">Sale kết thúc sau: ⏱ <span>...</span></div>
+        <a href="https://khoa-hoc-thach.vercel.app/banh_chuoi/" class="btn">XEM CHI TIẾT</a>
+      </div>
     </div>
-    <div class="card" data-name="khóa học tôm chiên">
-        <div class="img-w"><img src="https://cdn.tgdd.vn/2022/09/CookDish/2-cach-lam-tom-chien-xu-rao-dau-gion-rum-ai-cung-me-avt-1200x676.jpg"></div>
-        <div class="info">
-            <h3>Khóa học Tôm Chiên</h3>
-            <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
-            <div class="m-timer" data-id="tom_chien">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
-            <button class="m-btn" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/tom_chien/'">Xem chi tiết</button>
-        </div>
+    <div class="card">
+      <img src="https://cdn.tgdd.vn/2022/09/CookDish/2-cach-lam-tom-chien-xu-rao-dau-gion-rum-ai-cung-me-avt-1200x676.jpg">
+      <div class="info">
+        <h3>Khóa học Tôm Chiên</h3><div class="p-row"><span class="p-new">199.000đ</span><span class="p-old">399.000đ</span></div>
+        <div class="t-box" data-end="1773216360463">Sale kết thúc sau: ⏱ <span>...</span></div>
+        <a href="https://khoa-hoc-thach.vercel.app/tom_chien/" class="btn">XEM CHI TIẾT</a>
+      </div>
     </div>
-    <div class="card" data-name="khóa học gà bò">
-        <div class="img-w"><img src="https://cdn.tgdd.vn/Files/2021/07/27/1371137/tat-tan-tat-meo-bao-quan-thit-heo-ga-bo-ca-tuoi-ngon-ca-thang-202201131402288755.jpg"></div>
-        <div class="info">
-            <h3>Khóa học gà bò</h3>
-            <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
-            <div class="m-timer" data-id="ga_bo">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
-            <button class="m-btn" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/ga_bo/'">Xem chi tiết</button>
-        </div>
+    <div class="card">
+      <img src="https://cdn.tgdd.vn/Files/2021/07/27/1371137/tat-tan-tat-meo-bao-quan-thit-heo-ga-bo-ca-tuoi-ngon-ca-thang-202201131402288755.jpg">
+      <div class="info">
+        <h3>Khóa học gà bò</h3><div class="p-row"><span class="p-new">199.000đ</span><span class="p-old">399.000đ</span></div>
+        <div class="t-box" data-end="1773216360463">Sale kết thúc sau: ⏱ <span>...</span></div>
+        <a href="https://khoa-hoc-thach.vercel.app/ga_bo/" class="btn">XEM CHI TIẾT</a>
+      </div>
     </div></div>
     <script>
-        // --- EVERGREEN TIMER CHO TỪNG THẺ MENU ---
-        document.querySelectorAll('.m-timer').forEach(t => {
-            const cid = t.dataset.id;
-            let end = localStorage.getItem('end_menu_' + cid);
-            
-            if (!end || end < new Date().getTime()) {
-                end = new Date().getTime() + 60 * 60 * 1000;
-                localStorage.setItem('end_menu_' + cid, end);
-            }
-            
-            const span = t.querySelector('span');
-            
-            setInterval(() => {
-                const diff = end - new Date().getTime();
-                if(diff <= 0){ t.innerText="Ưu đãi đã kết thúc!"; return; }
-                const h = Math.floor(diff / (1000 * 60 * 60)); 
-                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)); 
-                const s = Math.floor((diff % (1000 * 60)) / 1000);
-                span.innerText=(h<10?'0'+h:h)+":"+(m<10?'0'+m:m)+":"+(s<10?'0'+s:s);
-            }, 1000);
-        });
+      function search(){ let v=document.getElementById('s').value.toLowerCase(); document.querySelectorAll('.card').forEach(c=>{ c.style.display=c.innerText.toLowerCase().includes(v)?"":"none"; }); }
+      document.querySelectorAll('.t-box').forEach(t => {
+        const end = parseInt(t.dataset.end); const span = t.querySelector('span');
+        setInterval(()=>{ const d = end - Date.now(); if(d<=0){t.style.display='none';return;}
+        const h=Math.floor(d/3600000), m=Math.floor((d%3600000)/60000), s=Math.floor((d%60000)/1000);
+        span.innerText=(h<10?'0'+h:h)+":"+(m<10?'0'+m:m)+":"+(s<10?'0'+s:s); }, 1000);
+      });
     </script></body></html>
