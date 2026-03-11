@@ -15,7 +15,7 @@
         <div class="info">
             <h3>Khóa học Bánh Quy Bơ</h3>
             <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
-            <div class="m-timer" data-end="1773213000000">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
+            <div class="m-timer" data-id="banh_quy_bo">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
             <button class="m-btn" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_quy_bo/'">Xem chi tiết</button>
         </div>
     </div>
@@ -24,7 +24,7 @@
         <div class="info">
             <h3>Khóa học Bánh Chuối</h3>
             <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
-            <div class="m-timer" data-end="4102444800000">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
+            <div class="m-timer" data-id="banh_chuoi">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
             <button class="m-btn" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/banh_chuoi/'">Xem chi tiết</button>
         </div>
     </div>
@@ -33,7 +33,7 @@
         <div class="info">
             <h3>Khóa học Tôm Chiên</h3>
             <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
-            <div class="m-timer" data-end="4102444800000">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
+            <div class="m-timer" data-id="tom_chien">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
             <button class="m-btn" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/tom_chien/'">Xem chi tiết</button>
         </div>
     </div>
@@ -42,13 +42,21 @@
         <div class="info">
             <h3>Khóa học gà bò</h3>
             <div class="p-box"><span class="n">199.000đ</span><span class="o">399.000đ</span></div>
-            <div class="m-timer" data-end="4102444800000">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
+            <div class="m-timer" data-id="ga_bo">Giá Sale kết thúc sau: ⏱ <span>...</span></div>
             <button class="m-btn" onclick="window.location.href='https://khoa-hoc-thach.vercel.app/ga_bo/'">Xem chi tiết</button>
         </div>
     </div></div>
     <script>
+        // --- EVERGREEN TIMER CHO TỪNG THẺ MENU ---
         document.querySelectorAll('.m-timer').forEach(t => {
-            const end = parseInt(t.dataset.end); // Đọc thẳng số Timestamp
+            const cid = t.dataset.id;
+            let end = localStorage.getItem('end_menu_' + cid);
+            
+            if (!end || end < new Date().getTime()) {
+                end = new Date().getTime() + 60 * 60 * 1000;
+                localStorage.setItem('end_menu_' + cid, end);
+            }
+            
             const span = t.querySelector('span');
             
             setInterval(() => {
